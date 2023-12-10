@@ -55,7 +55,7 @@ class AuthModal(disnake.ui.Modal):
             emb.add_field(name='Тэги', value=tags, inline=False)
             emb.add_field(name='Сроки', value=datetime, inline=False)
             emb.add_field(name='Портфолио', value=portfolio, inline=False)
-            emb.add_field(name='Контактные данные', value=f'@{inter.author.mention}')
+            emb.add_field(name='Контактные данные', value=inter.author.mention)
             match tags.lower():
                 case 'перестройщик':
                     channel = inter.guild.get_channel(Config.REBUILD)
