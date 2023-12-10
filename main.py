@@ -1,6 +1,7 @@
 from disnake import Intents
 from disnake.ext.commands import Bot
-from misc import Env
+from dotenv import load_dotenv
+
 import os
 
 
@@ -8,6 +9,8 @@ def start_bot():
     intents = Intents.all()
     intents.message_content = True
     intents.members = True
+    load_dotenv(".env")
+
     try:
         bot = Bot(command_prefix='/', intents=intents)
         for file in os.listdir("./cogs"):
@@ -18,7 +21,7 @@ def start_bot():
         print(e)
     print('Started')
 
-    bot.run(Env.TOKEN)
+    bot.run(os.environ.get('BOT_TOKEN', 'define me!'))
 
 
 start_bot()
